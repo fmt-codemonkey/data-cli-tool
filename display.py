@@ -1,0 +1,1 @@
+# Resp. 6: Format & show output

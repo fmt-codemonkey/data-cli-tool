@@ -207,5 +207,7 @@ marimo/_lsp/
 __marimo__/
 
 # Custom 
+.DS_Store
 *.csv
 *.json
+data/
