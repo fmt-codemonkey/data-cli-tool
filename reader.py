@@ -38,8 +38,10 @@ def read_file(file_path: Path) -> Generator[dict, None, None]:
 
     elif file_path.suffix == ".json":
         with open(file_path) as file:
-            # read json
-            pass
+            data = json.load(file)
+            for row in data: 
+                converted_row = {key: convert_value(value) for key, value in row.items()}
+                yield converted_row
     else:
         raise ValueError(
             f"Unsupported file type '{file_path.suffix}'."
@@ -48,5 +50,10 @@ def read_file(file_path: Path) -> Generator[dict, None, None]:
 
 
 if __name__ =="__main__":
+    print("\n--- CSV TEST ---")
     for row in read_file(Path("data/employees.csv")):
+        print(row)
+
+    print("\n--- JSON TEST ---")
+    for row in read_file(Path("data/employees.json")):
         print(row)
